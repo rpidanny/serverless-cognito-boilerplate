@@ -13,3 +13,9 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
       TableName: ${self:custom.dynamoDbTableName}
+
+# Print out the name of the dynamodb table that is created
+Outputs:
+  DynamoDbTableName:
+    Value:
+      Ref: DynamoDbTable

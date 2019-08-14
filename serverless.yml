@@ -47,7 +47,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "Fn::GetAtt": [ dynamoDbTableName, Arn ]
+        - "Fn::GetAtt": [ DynamoDbTable, Arn ]
 
 custom:
   defaultStage: dev
