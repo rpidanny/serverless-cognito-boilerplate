@@ -32,3 +32,11 @@ Boilerplate for serverless authenticated applications.
 
 - [istanbul](https://istanbul.js.org)
 - [codecov](https://codecov.io)
+
+## Note
+
+### Deployment Issue
+
+Serverless deploy fails when the `apiGateway` tracing is enabled when you deploy it for the first time. As mentioned in [https://github.com/serverless/serverless/issues/6081](https://github.com/serverless/serverless/issues/6081).
+
+So, comment out `apiGateway` tracing in `serverless.yml` for the first deploy. Then you can enable it for subsequent deploys.
