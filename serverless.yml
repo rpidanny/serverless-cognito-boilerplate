@@ -59,7 +59,7 @@ custom:
   dataBucketName: ${self:service}-${self:provider.stage}-databucket
 
 functions:
-  - ${file(functions/test.yml)}
+  - ${file(functions/helloworld.yml)}
 
 resources:
   - ${file(resources/cognito-user-pool.yml)}
