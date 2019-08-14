@@ -4,10 +4,12 @@
   "description": "Boilerplate for serverless authenticated applications.",
   "main": "serverless.yml",
   "scripts": {
-    "test": "mocha src/**/*.test.js",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "deploy": "npm run lint && npm run test && export SLS_DEBUG=* && serverless deploy"
+    "test": "standard && mocha src/**/*.test.js",
+    "test:coverage": "standard && istanbul cover _mocha src/**/*.test.js --recursive --report lcovonly",
+    "codecov": "cat coverage/lcov.info | codecov",
+    "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
+    "codecov": "^3.5.0",
+    "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
     "serverless-offline": "^5.10.1",
     "serverless-plugin-include-dependencies": "^3.2.1",

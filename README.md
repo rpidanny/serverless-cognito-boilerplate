@@ -1,6 +1,7 @@
 # serverless-cognito-boilerplate
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![codecov](https://codecov.io/gh/rpidanny/serverless-cognito-boilerplate/branch/master/graph/badge.svg?token=Mfp8PQYgIL)](https://codecov.io/gh/rpidanny/serverless-cognito-boilerplate)
 
 Boilerplate for serverless authenticated applications.
 
