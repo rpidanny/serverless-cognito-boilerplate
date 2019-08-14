@@ -1,0 +1,30 @@
+{
+  "name": "serverless-cognito-boilerplate",
+  "version": "0.1.0",
+  "description": "Boilerplate for serverless authenticated applications.",
+  "main": "serverless.yml",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rpidanny@github.com/rpidanny/serverless-cognito-boilerplate.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "cognito"
+  ],
+  "author": "Abhishek Maharjan <abhishek.rpidanny@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpidanny/serverless-cognito-boilerplate/issues"
+  },
+  "homepage": "https://github.com/rpidanny/serverless-cognito-boilerplate#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-offline": "^5.10.1",
+    "serverless-plugin-include-dependencies": "^3.2.1",
+    "standard": "^13.1.0"
+  }
+}

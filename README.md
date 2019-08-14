@@ -15,3 +15,7 @@ Boilerplate for serverless authenticated applications.
 ## Functions
 
 - `Test` Function
+
+## Linting
+
+- `standard`
