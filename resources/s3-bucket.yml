@@ -3,7 +3,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       # Set the CORS policy
-      BucketName: ${self:custom.bucketName}
+      BucketName: ${self:custom.dataBucketName}
       CorsConfiguration:
         CorsRules:
           -
