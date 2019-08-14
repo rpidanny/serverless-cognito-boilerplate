@@ -1,0 +1,68 @@
+service: cognito-boilerplate
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-include-dependencies
+
+package:
+  individually: true
+  include:
+    # - src/assets/**/*
+  exclude:
+    - node_modules/**
+    - README.md
+    - package.json
+    - package-lock.json
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  versionFunctions: false
+  tracing:
+    lambda: true
+    apiGateway: true
+  stage: ${self:custom.currentStage}
+  profile: ${self:custom.currentStage}
+  stackTags:
+    PROJECT: ${self:service}
+    STAGE: ${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - Ref : AttachmentsBucket
+            - "/*"
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [ dynamoDbTableName, Arn ]
+
+custom:
+  defaultStage: dev
+  currentStage: ${opt:stage, self:custom.defaultStage}
+  userPoolName: ${self:service}-${self:provider.stage}-userpool
+  userPoolClientName: ${self:service}-${self:provider.stage}-webclient
+  identityPoolName: ${self:service}-${self:provider.stage}-identitypool
+  dynamoDbTableName: ${self:service}-${self:provider.stage}-table
+  dataBucketName: ${self:service}-${self:provider.stage}-databucket
+
+functions:
+  - ${file(functions/test.yml)}
+
+resources:
+  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
+  - ${file(resources/s3-bucket.yml)}
+  - ${file(resources/dynamodb-table.yml)}

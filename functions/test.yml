@@ -1,0 +1,11 @@
+test:
+  handler: src/functions/test.handler
+  description: Test API
+  memorySize: 128
+  timeout: 5
+  events:
+    - http:
+        path: test
+        method: get
+        cors: true
+        authorizer: aws_iam
