@@ -21,6 +21,6 @@ Resources:
 
 # Print out the name of the bucket that is created
 Outputs:
-  AttachmentsBucketName:
+  DataBucketName:
     Value:
       Ref: DataBucket
