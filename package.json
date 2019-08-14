@@ -4,7 +4,7 @@
   "description": "Boilerplate for serverless authenticated applications.",
   "main": "serverless.yml",
   "scripts": {
-    "test": "npm run test",
+    "test": "mocha src/**/*.test.js",
     "lint": "standard",
     "lint:fix": "standard --fix",
     "deploy": "export SLS_DEBUG=* && serverless deploy"
@@ -26,6 +26,8 @@
   "homepage": "https://github.com/rpidanny/serverless-cognito-boilerplate#readme",
   "dependencies": {},
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
     "serverless-offline": "^5.10.1",
     "serverless-plugin-include-dependencies": "^3.2.1",
     "standard": "^13.1.0"
