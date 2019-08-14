@@ -27,3 +27,8 @@ Boilerplate for serverless authenticated applications.
 
 - [chai](https://www.chaijs.com)
 - [mocha](https://mochajs.org)
+
+### Code Coverage
+
+- [istanbul](https://istanbul.js.org)
+- [codecov](https://codecov.io)
