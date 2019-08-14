@@ -7,7 +7,7 @@
     "test": "mocha src/**/*.test.js",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "deploy": "export SLS_DEBUG=* && serverless deploy"
+    "deploy": "npm run lint && npm run test && export SLS_DEBUG=* && serverless deploy"
   },
   "repository": {
     "type": "git",
