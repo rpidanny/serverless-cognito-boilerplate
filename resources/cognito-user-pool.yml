@@ -23,9 +23,6 @@ Resources:
         - AttributeDataType: String
           Name: birthdate
           Required: True
-        - AttributeDataType: String
-          Name: picture
-          Required: False
       # UsernameAttributes:
       #   - email
       AutoVerifiedAttributes:
