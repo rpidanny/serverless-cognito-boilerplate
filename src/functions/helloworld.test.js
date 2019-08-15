@@ -4,7 +4,7 @@ const { handler } = require('./helloworld')
 const { assert } = require('chai')
 
 describe('Hello World Function Test', () => {
-  it('The hello world function should return statusCode 200', (done) => {
+  it('Should return statusCode 200', (done) => {
     const event = {}
     const context = {}
     const callback = (err, data) => {
