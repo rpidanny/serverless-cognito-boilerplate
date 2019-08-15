@@ -23,6 +23,9 @@ Resources:
         - AttributeDataType: String
           Name: birthdate
           Required: True
+        - AttributeDataType: String
+          Name: picture
+          Required: False
       # UsernameAttributes:
       #   - email
       AutoVerifiedAttributes:
@@ -49,7 +52,13 @@ Resources:
       GenerateSecret: False
       UserPoolId:
         Ref: CognitoUserPool
-
+      # LogoutURLs:
+      #   - 'http://localhost:3000/'
+      # CallbackURLs:
+      #   - 'http://localhost:3000/'
+      # SupportedIdentityProviders:
+      #   - 'COGNITO'
+      #   - 'Google'
 Outputs:
   UserPoolId:
     Value:
