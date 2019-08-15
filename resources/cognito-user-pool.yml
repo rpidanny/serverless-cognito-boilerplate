@@ -38,6 +38,10 @@ Resources:
           RequireNumbers: True
           RequireSymbols: False
           RequireUppercase: True
+      VerificationMessageTemplate:
+        DefaultEmailOption: "CONFIRM_WITH_CODE"
+        EmailMessage: "Your verification code for Serverless Boilerplate is {####}."
+        EmailSubject: "Your Verification Code"
   CognitoUserPoolClient:
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
