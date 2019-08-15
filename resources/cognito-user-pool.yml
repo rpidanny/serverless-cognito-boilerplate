@@ -10,12 +10,18 @@ Resources:
           Required: True
         - AttributeDataType: String
           Name: name
-          Required: false
+          Required: True
         - AttributeDataType: String
           Name: family_name
-          Required: false
+          Required: True
         - AttributeDataType: String
           Name: phone_number
+          Required: True
+        - AttributeDataType: String
+          Name: gender
+          Required: True
+        - AttributeDataType: String
+          Name: birthdate
           Required: True
       # UsernameAttributes:
       #   - email
