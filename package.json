@@ -9,7 +9,7 @@
     "test": "standard && mocha src/**/*.test.js",
     "test:coverage": "standard && istanbul cover _mocha src/**/*.test.js --recursive --report lcovonly",
     "codecov": "cat coverage/lcov.info | codecov",
-    "package": "serverless package",
+    "package": "export SLS_DEBUG=* && serverless package",
     "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy"
   },
   "repository": {
