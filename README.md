@@ -5,6 +5,8 @@
 
 Boilerplate for serverless authenticated applications.
 
+Frontend boilerplate that accompanies this can be found [here](https://github.com/rpidanny/serverless-cognito-ui-boilerplate).
+
 ## Includes
 
 ### Resources
