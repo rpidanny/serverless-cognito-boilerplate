@@ -9,6 +9,7 @@
     "test": "standard && mocha src/**/*.test.js",
     "test:coverage": "standard && istanbul cover _mocha src/**/*.test.js --recursive --report lcovonly",
     "codecov": "cat coverage/lcov.info | codecov",
+    "package": "serverless package",
     "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "codecov": "^3.5.0",
     "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
+    "serverless": "^1.50.0",
     "serverless-offline": "^5.10.1",
     "serverless-plugin-include-dependencies": "^3.2.1",
     "standard": "^13.1.0"
