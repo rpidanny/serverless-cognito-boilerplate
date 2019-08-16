@@ -4,7 +4,7 @@ branches:
     - gh-pages
 sudo: false
 node_js:
-  - "stable"
+  - 8
 cache:
   directories:
     - node_modules
