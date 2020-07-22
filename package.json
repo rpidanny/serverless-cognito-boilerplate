@@ -10,7 +10,8 @@
     "test:coverage": "nyc --reporter=lcov --reporter=text-summary npm run test",
     "codecov": "cat coverage/lcov.info | codecov",
     "package": "export SLS_DEBUG=* && serverless package",
-    "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy"
+    "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy",
+    "remove": "serverless remove"
   },
   "repository": {
     "type": "git",
