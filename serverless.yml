@@ -16,15 +16,17 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   region: eu-west-1
   versionFunctions: false
   tracing:
     lambda: true
     apiGateway: true
   stage: ${self:custom.currentStage}
-  profile: ${self:custom.currentStage}
   stackTags:
+    PROJECT: ${self:service}
+    STAGE: ${opt:stage, self:provider.stage}
+  tags:
     PROJECT: ${self:service}
     STAGE: ${opt:stage, self:provider.stage}
   iamRoleStatements:
