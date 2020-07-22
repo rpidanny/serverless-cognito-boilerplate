@@ -1,4 +1,4 @@
-service: cognito-boilerplate
+service: ${self:custom.projectName}
 
 plugins:
   - serverless-offline
@@ -50,7 +50,8 @@ provider:
         - "Fn::GetAtt": [ DynamoDbTable, Arn ]
 
 custom:
-  defaultStage: dev
+  projectName: cognito-boilerplate
+  defaultStage: ${env:USER}
   currentStage: ${opt:stage, self:custom.defaultStage}
   userPoolName: ${self:service}-${self:provider.stage}-userpool
   userPoolClientName: ${self:service}-${self:provider.stage}-webclient

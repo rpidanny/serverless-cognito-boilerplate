@@ -7,7 +7,7 @@
     "lint": "standard",
     "lint:fix": "standard --fix",
     "test": "standard && mocha src/**/*.test.js",
-    "test:coverage": "standard && istanbul cover _mocha src/**/*.test.js --recursive --report lcovonly",
+    "test:coverage": "nyc --reporter=lcov --reporter=text-summary npm run test",
     "codecov": "cat coverage/lcov.info | codecov",
     "package": "export SLS_DEBUG=* && serverless package",
     "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy"
@@ -31,8 +31,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "codecov": "^3.7.1",
-    "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
+    "nyc": "^15.1.0",
     "serverless": "^1.50.0",
     "serverless-offline": "^5.10.1",
     "serverless-plugin-include-dependencies": "^3.2.1",
