@@ -8,9 +8,10 @@
     "lint:fix": "eslint --fix",
     "test": "jest src/**/*.test.js",
     "codecov": "cat coverage/lcov.info | codecov",
-    "package": "export SLS_DEBUG=* && serverless package",
-    "deploy": "npm run test:coverage && export SLS_DEBUG=* && serverless deploy",
-    "remove": "serverless remove",
+    "sls:package": "export SLS_DEBUG=* && serverless package",
+    "sls:version": "sls --version",
+    "sls:deploy": "npm run test && export SLS_DEBUG=* && serverless deploy",
+    "sls:remove": "serverless remove",
     "release": "semantic-release"
   },
   "repository": {
