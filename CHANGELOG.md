@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rpidanny/serverless-cognito-boilerplate/compare/v1.0.0...v1.0.1) (2022-05-02)
+
+
+### Bug Fixes
+
+* npm scripts ([1a5e1a5](https://github.com/rpidanny/serverless-cognito-boilerplate/commit/1a5e1a52dede81c76ff0edf770471a5eba3bcdc5))
+
 # 1.0.0 (2022-05-02)
 
 

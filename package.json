@@ -1,6 +1,6 @@
 {
   "name": "serverless-cognito-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Boilerplate for serverless authenticated applications.",
   "main": "serverless.yml",
   "scripts": {
