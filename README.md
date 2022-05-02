@@ -25,16 +25,14 @@ Demo [https://serverlessdemo.abhishek.pro.np](https://serverlessdemo.abhishek.pr
 
 ### Linting
 
-- [standard](https://standardjs.com/)
+- eslint / prettier
 
 ### Unit Tests
 
-- [chai](https://www.chaijs.com)
-- [mocha](https://mochajs.org)
+- jest
 
 ### Code Coverage
 
-- [istanbul](https://istanbul.js.org)
 - [codecov](https://codecov.io)
 
 ## Note
