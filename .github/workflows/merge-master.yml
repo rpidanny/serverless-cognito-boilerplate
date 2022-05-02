@@ -1,0 +1,97 @@
+name: "Merge into master"
+on:
+  push:
+    branches:
+      - master
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  Build:
+    name: 'Test'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: NPM Test
+        run: |
+          npm install
+          npm run test
+        env:
+          CI: true
+
+  Release:
+    name: Release
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build --if-present
+      - run: npm run test
+      - run: curl -s https://codecov.io/bash | bash
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+      - run: npm run release
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CI: true
+
+  Deploy:
+    name: Deploy
+    needs: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.AWS_DEV_ROLE }}
+          role-duration-seconds: 1200
+          mask-aws-account-id: false
+
+      - name: SLS Install
+        run: curl -o- -L https://slss.io/install | bash
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Verify Serverless Version
+        run: npm run sls:version
+
+      # - name: Serverless Deploy
+      #   run: npm run sls:deploy

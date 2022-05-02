@@ -1,0 +1,34 @@
+name: 'CI'
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  Build:
+    name: 'Test'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: NPM Test
+        run: |
+          npm install
+          npm run test
+        env:
+          CI: true

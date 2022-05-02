@@ -1,0 +1,90 @@
+name: 'Serverless Package'
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  Dev:
+    name: Dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.AWS_DEV_ROLE }}
+          role-duration-seconds: 1200
+          mask-aws-account-id: false
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Verify Serverless Version
+        run: npm run sls:version
+
+      - name: Serverless Package
+        run: npm run sls:package
+
+  # Test:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Clone Repo
+  #       uses: actions/checkout@master
+
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: eu-west-1
+  #         role-to-assume: ${{ secrets.AWS_TEST_ROLE }}
+  #         role-duration-seconds: 1200
+  #         mask-aws-account-id: false
+
+  #     - name: NPM Install
+  #       run: npm ci
+
+  #     - name: Verify Serverless Version
+  #       run: npm run sls:version
+
+  #     - name: Serverless Package
+  #       run: npm run sls:package
+
+  # Prod:
+  #   name: Prod
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Clone Repo
+  #       uses: actions/checkout@master
+
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: eu-west-1
+  #         role-duration-seconds: 1200
+  #         mask-aws-account-id: false
+
+  #     - name: NPM Install
+  #       run: npm ci
+
+  #     - name: Verify Serverless Version
+  #       run: npm run sls:version
+
+  #     - name: Serverless Package
+  #       run: npm run sls:package
