@@ -2,6 +2,7 @@ service: ${self:custom.projectName}
 
 plugins:
   - serverless-offline
+  - serverless-plugin-typescript
   - serverless-plugin-include-dependencies
 
 package:
