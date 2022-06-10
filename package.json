@@ -58,7 +58,7 @@
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
     "prettier": "^2.6.2",
-    "semantic-release": "^19.0.2",
+    "semantic-release": "^19.0.3",
     "serverless": "^3.16.0",
     "serverless-offline": "^8.7.0",
     "serverless-plugin-include-dependencies": "^3.2.1",
