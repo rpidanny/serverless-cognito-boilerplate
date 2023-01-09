@@ -60,7 +60,7 @@
     "prettier": "^2.6.2",
     "semantic-release": "^19.0.2",
     "serverless": "^3.16.0",
-    "serverless-offline": "^8.7.0",
+    "serverless-offline": "^8.8.1",
     "serverless-plugin-include-dependencies": "^3.2.1",
     "serverless-plugin-typescript": "^2.1.2",
     "ts-jest": "^26.1.4",
